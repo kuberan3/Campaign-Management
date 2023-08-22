@@ -1,8 +1,8 @@
 import Campaigns from "./Campaigns";
 function App() {
   return (
-      <Campaigns>
-      </Campaigns>
+      <Campaigns/>
+    //  <SampleStar></SampleStar>
   );  
 }
 

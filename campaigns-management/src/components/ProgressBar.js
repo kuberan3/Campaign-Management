@@ -5,9 +5,7 @@ width: 112px;
 height: 6px;
 `
 const ProgressBar = (rate) => {
-   console.log(rate.rate)
     let clr=""
-
     if(rate.rate<30)
     {
         clr="rgb(220,50,50)"
@@ -24,5 +22,5 @@ const ProgressBar = (rate) => {
         </RateDiv>
      );
 }
- 
+
 export default ProgressBar;

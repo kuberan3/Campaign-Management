@@ -19,20 +19,22 @@ import {
   StatusDiv,
   StatusContent,
   LastModifiedDiv,
-
+//   StyledRate,
+  ActionDotDiv,
 } from "./Components";
-import { Space, Table, Tag,Rate } from "antd";
+import { Table, } from "antd";
 import UserIcon from "./components/UserIcon";
 import ThreeDot from "./components/Three-Dot-svg";
 import SortIcon from "./components/SortIcon";
 import LineText from "./components/FileText";
-import RateRuler from "./components/RateRuler";
+// import RateRuler from "./components/RateRuler";
 import FullStar from "./components/FullStar";
 import HalfStar from "./components/HalsStar";
-import EmptyStar from "./components/EmptyStar"
+import EmptyStar from "./components/EmptyStar";
 import ActionDot from "./components/ActionDot";
-import RateRuler61 from "./components/RateRuler61";
+// import RateRuler61 from "./components/RateRuler61";
 import ProgressBar from "./components/ProgressBar";
+import StarRatings from "./components/StarRatings";
 const columns = [
   {
     title: (
@@ -42,45 +44,49 @@ const columns = [
     ),
     // dataIndex: "name",
     key: "name",
-    render: (data, score) => 
+    render: (data, score) => (
       <CampaignNameDiv>
-         <CampaignNameTag>{data.name}</CampaignNameTag>
+        <CampaignNameTag>{data.name}</CampaignNameTag>
         <RecepientResponseDiv>
-            <UserIcon></UserIcon>
-            <RecepienPTag>Recipients</RecepienPTag>
-            <RecepienScore>{data.recepient}</RecepienScore>
-            <Linediv></Linediv>
-            <LineText></LineText>
-            <RecepienPTag>Response</RecepienPTag>
-            <RecepienScore>{data.response}</RecepienScore>
+          <UserIcon></UserIcon>
+          <RecepienPTag>Recipients</RecepienPTag>
+          <RecepienScore>{data.recepient}</RecepienScore>
+          <Linediv></Linediv>
+          <LineText></LineText>
+          <RecepienPTag>Response</RecepienPTag>
+          <RecepienScore>{data.response}</RecepienScore>
         </RecepientResponseDiv>
       </CampaignNameDiv>
+    ),
   },
   {
     title: <ColumnTitlePTag>Completion Rate</ColumnTitlePTag>,
     key: "CompletionRate",
-    render: (data) => 
-    <CompletionRatediv>
-        <RatePercent marginLeft={data.rate} >{data.rate}%</RatePercent>
-        <ProgressBar rate={data.rate} ></ProgressBar>
-    </CompletionRatediv>
+    render: (data) => (
+      <CompletionRatediv>
+        <RatePercent marginLeft={data.rate}>{data.rate}%</RatePercent>
+        <ProgressBar rate={data.rate}></ProgressBar>
+      </CompletionRatediv>
+    ),
   },
   {
     title: <ColumnTitlePTag>Average Score</ColumnTitlePTag>,
     key: "AverageScore",
-    render: (data) => 
-    <StarScoreDiv>
-        {data.star}
+    render: (data) => (
+      <StarScoreDiv>
+        <StarRatings score={data.score} ></StarRatings>
         <ScoreAverage>{data.score}</ScoreAverage>
-    </StarScoreDiv>
+      </StarScoreDiv>
+    ),
   },
   {
     title: <ColumnTitlePTag>Status</ColumnTitlePTag>,
     key: "Status",
-    render: (data) => 
-    <StatusDiv>
+    render: (data) => (
+      <StatusDiv>
         <StatusContent>{data.status}</StatusContent>
-    </StatusDiv>
+      </StatusDiv>
+    ),
   },
   {
     title: (
@@ -88,34 +94,25 @@ const columns = [
         <ColumnTitlePTag>Last Modified</ColumnTitlePTag> <SortIcon></SortIcon>{" "}
       </ColumnTitlediv>
     ),
-   
+
     key: "LastModified",
-    render: (data) => 
-   <LastModifiedDiv>
-    {data.lastmodofied}
-   </LastModifiedDiv>
+    render: (data) => <LastModifiedDiv>{data.lastmodofied}</LastModifiedDiv>,
   },
   {
     title: (
       <ColumnTitlediv>
-        <ColumnTitlePTag>
-          Last Activated
-        </ColumnTitlePTag> <SortIcon></SortIcon>
+        <ColumnTitlePTag>Last Activated</ColumnTitlePTag> <SortIcon></SortIcon>
       </ColumnTitlediv>
     ),
-   
+
     key: "LastActivated",
-    render: (data) => 
-   <LastModifiedDiv>
-        {data.lastactivated}
-   </LastModifiedDiv>
+    render: (data) => <LastModifiedDiv>{data.lastactivated}</LastModifiedDiv>,
   },
   {
     title: <ColumnTitlePTag>Actions</ColumnTitlePTag>,
-   
+
     key: "Actions",
-    render: () => 
-        <ActionDot></ActionDot>
+    render: () => <ActionDotDiv> <ActionDot></ActionDot></ActionDotDiv>,
   },
 ];
 const data = [
@@ -124,80 +121,92 @@ const data = [
     name: "Application Survey",
     recepient: 100,
     response: 80,
-    rate:23.1,
-    score:3.42,
-    star:<StarDiv>
-            <FullStar></FullStar>
-            <FullStar></FullStar>
-            <FullStar></FullStar>
-            <HalfStar></HalfStar>
-            <EmptyStar></EmptyStar>
-        </StarDiv>,
-    status:'Active',
-    lastmodofied:'Oct 25, 2021',
-    lastactivated:'Oct 25, 2021'
+    rate: 23.1,
+    score: 3.42,
+    // star: (
+    //   <StarDiv>
+    //     <FullStar></FullStar>
+    //     <FullStar></FullStar>
+    //     <FullStar></FullStar>
+    //     <HalfStar></HalfStar>
+    //     <EmptyStar></EmptyStar>
+    //   </StarDiv>
+    // ),
+    status: "Active",
+    lastmodofied: "Oct 25, 2021",
+    lastactivated: "Oct 25, 2021",
   },
   {
     key: "2",
     name: "Application Survey",
     recepient: 100,
     response: 80,
-    rate:61.2,
-    score:4.35,
-    star:<StarDiv>
-            <FullStar></FullStar>
-            <FullStar></FullStar>
-            <FullStar></FullStar>
-            <FullStar></FullStar>
-            <HalfStar></HalfStar>
-            
-        </StarDiv>,
-    status:'Active',
-    lastmodofied:'Oct 25, 2021',
-    lastactivated:'Oct 25, 2021'
+    rate: 61.2,
+    score: 4.35,
+    // star: (
+    //   <StarDiv>
+    //     <FullStar></FullStar>
+    //     <FullStar></FullStar>
+    //     <FullStar></FullStar>
+    //     <FullStar></FullStar>
+    //     <HalfStar></HalfStar>
+    //   </StarDiv>
+    // ),
+    status: "Active",
+    lastmodofied: "Oct 25, 2021",
+    lastactivated: "Oct 25, 2021",
   },
   {
     key: "3",
     name: "Application Survey",
     recepient: 100,
     response: 80,
-    rate:100,
-    score:5,
-    star:<StarDiv>
-            <FullStar></FullStar>
-            <FullStar></FullStar>
-            <FullStar></FullStar>
-            <FullStar></FullStar>
-            <FullStar></FullStar>
-        </StarDiv>,
-    status:'Active',
-    lastmodofied:'Oct 25, 2021',
-    lastactivated:'Oct 25, 2021'
+    rate: 100,
+    score: 5,
+    // star: (
+    //   <StarDiv>
+    //     <FullStar></FullStar>
+    //     <FullStar></FullStar>
+    //     <FullStar></FullStar>
+    //     <FullStar></FullStar>
+    //     <FullStar></FullStar>
+    //   </StarDiv>
+    // ),
+    status: "Active",
+    lastmodofied: "Oct 25, 2021",
+    lastactivated: "Oct 25, 2021",
   },
   {
     key: "4",
     name: "Application Survey",
     recepient: 100,
     response: 80,
-    rate:80,
-
-    star:<RecepienPTag>No Survey</RecepienPTag>,
-    status:'Active',
-    lastmodofied:'Oct 25, 2021',
-    lastactivated:'Oct 25, 2021'
+    rate: 80,
+    score:2.5,
+    star: <RecepienPTag>No Survey</RecepienPTag>,
+    status: "Active",
+    lastmodofied: "Oct 25, 2021",
+    lastactivated: "Oct 25, 2021",
   },
   {
     key: "5",
     name: "Application Survey",
     recepient: 100,
     response: 80,
-    rate:55.1,
-    // score:3.42,
-    star:<RecepienPTag>-</RecepienPTag>
-    ,
-    status:'Active',
-    lastmodofied:'Oct 25, 2021',
-    lastactivated:'Oct 25, 2021'
+    rate: 55.1,
+    score: 5,
+    star: (
+      <StarDiv>
+        <FullStar></FullStar>
+        <FullStar></FullStar>
+        <FullStar></FullStar>
+        <FullStar></FullStar>
+        <FullStar></FullStar>
+      </StarDiv>
+    ),
+    status: "Active",
+    lastmodofied: "Oct 25, 2021",
+    lastactivated: "Oct 25, 2021",
   },
 ];
 const Campaigns = () => {
@@ -209,7 +218,7 @@ const Campaigns = () => {
           <ThreeDot></ThreeDot>
         </DotDiv>
       </HeaderDiv>
-      <Table columns={columns} dataSource={data} />;
+      <Table columns={columns} dataSource={data} />
     </MainDiv>
   );
 };

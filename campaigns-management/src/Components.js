@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { Table } from "antd";
+import { Table,Rate } from "antd";
 export const MainDiv=styled.div`
 width:100vw;
 height:100vh;
@@ -53,7 +53,7 @@ font-weight: 400;
 line-height: normal;
 `
 
-export const ColumnTitlediv=styled.p`
+export const ColumnTitlediv=styled.div`
    display: flex;
    align-items: center;
 `
@@ -155,4 +155,14 @@ font-size: 14px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
+`
+
+export const StyledRate=styled(Rate)`
+font-size: 12px;
+color: rgb(26,99,169);
+margin: -10px;
+`
+
+export const ActionDotDiv=styled.div`
+margin-left: 20px;
 `
